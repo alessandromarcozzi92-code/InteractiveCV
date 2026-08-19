@@ -1074,13 +1074,13 @@ git commit -m "feat: add keyboard menu navigation hook"
   - `<ArcadeShell />` — header + `NavMenu` + `<main>` rendering `<Outlet />`,
     preceded by a skip link targeting `#screen`.
 
-- [ ] **Step 1: Install the router**
+- [x] **Step 1: Install the router**
 
 ```bash
 npm install react-router-dom
 ```
 
-- [ ] **Step 2: Write the menu data**
+- [x] **Step 2: Write the menu data**
 
 Create `src/data/menu.ts`:
 
@@ -1097,7 +1097,7 @@ export const MENU_ITEMS: MenuItem[] = [
 ]
 ```
 
-- [ ] **Step 3: Write the failing NavMenu test**
+- [x] **Step 3: Write the failing NavMenu test**
 
 Create `src/components/layout/NavMenu.test.tsx`:
 
@@ -1156,12 +1156,12 @@ test('returns to the title screen on Escape', async () => {
 })
 ```
 
-- [ ] **Step 4: Run to verify it fails**
+- [x] **Step 4: Run to verify it fails**
 
 Run: `npm test src/components/layout/NavMenu.test.tsx`
 Expected: FAIL — cannot resolve `./NavMenu`.
 
-- [ ] **Step 5: Implement NavMenu**
+- [x] **Step 5: Implement NavMenu**
 
 Create `src/components/layout/NavMenu.module.css`:
 
@@ -1247,12 +1247,12 @@ export function NavMenu() {
 }
 ```
 
-- [ ] **Step 6: Run the NavMenu tests to verify they pass**
+- [x] **Step 6: Run the NavMenu tests to verify they pass**
 
 Run: `npm test src/components/layout/NavMenu.test.tsx`
 Expected: PASS, 5 tests.
 
-- [ ] **Step 7: Implement ArcadeShell**
+- [x] **Step 7: Implement ArcadeShell**
 
 Create `src/components/layout/ArcadeShell.module.css`:
 
@@ -1328,17 +1328,29 @@ export function ArcadeShell() {
 }
 ```
 
-- [ ] **Step 8: Run the full suite**
+- [x] **Step 8: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add src/data/menu.ts src/components/layout package.json package-lock.json
 git commit -m "feat: add arcade shell layout with dual-input menu"
 ```
+
+**Deviation from the plan (Steps 3 and 5):** the planned NavMenu stamped
+`role="menubar"` on the list, `role="menuitem"` on each Link and
+`role="none"` on each li. `menuitem` overrides the implicit `link` role,
+so the entries stopped being announced as links and three of this task's own
+tests failed on `getAllByRole('link')`. The ARIA menu pattern is for
+application menus, not site navigation, and it contradicts spec section 9
+("ogni voce di menu e un link reale"). All three roles were dropped;
+`tabIndex` and `onKeyDown` moved to the `<nav>`, which already carries the
+navigation role and an accessible name. The two keyboard tests now query
+`getByRole('navigation', { name: 'Sezioni del CV' })` instead of
+`menubar`.
 
 ---
 
