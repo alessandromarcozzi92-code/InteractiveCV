@@ -41,6 +41,22 @@ Vite + React + TypeScript, React Router, CSS nativo con custom
 properties e CSS Modules, Vitest + React Testing Library. Asset grafici
 da pack CC0. Deploy su GitHub Pages via GitHub Actions.
 
+## Sviluppo
+
+```bash
+npm install
+npm run dev     # dev server
+npm test        # Vitest
+npm run build   # type-check, build, e copia 404.html
+npm run lint    # oxlint
+```
+
+## Contenuti
+
+Tutti i contenuti stanno in `src/data/cv.ts`. I componenti non contengono
+testo del CV: per aggiornare il curriculum si modifica solo quel file.
+Il PDF scaricabile e `public/cv.pdf`.
+
 ## Architettura
 
 Due confini tengono il progetto manutenibile:
@@ -50,6 +66,15 @@ Due confini tengono il progetto manutenibile:
 - **Grafica**: ogni dettaglio pixel-art vive in `components/ui/`.
   Cambiare pack grafico non tocca le pagine.
 
+## Deploy
+
+Push su `main` -> GitHub Action -> GitHub Pages, con
+`VITE_BASE_PATH=/InteractiveCV/`. Il build copia `index.html` in
+`404.html`, cosi un refresh su `/skills` non da errore su Pages.
+
+Passaggio a dominio custom: impostare `VITE_BASE_PATH=/` nel workflow e
+aggiungere `public/CNAME` con il dominio. Nessuna modifica al codice.
+
 ## Documentazione
 
 - Design: [docs/superpowers/specs/2026-08-19-interactive-cv-8bit-design.md](docs/superpowers/specs/2026-08-19-interactive-cv-8bit-design.md)
@@ -57,4 +82,13 @@ Due confini tengono il progetto manutenibile:
 
 ## Stato
 
-Design e piano approvati. Implementazione non ancora iniziata.
+Implementazione completa: routing, sette schermate, navigazione doppia
+(tastiera e puntatore), animazioni con guardia `prefers-reduced-motion`,
+deploy automatico.
+
+Restano da fornire:
+
+- `public/cv.pdf` — al momento e un placeholder, non un PDF valido.
+- I contenuti reali in `src/data/cv.ts` — al momento placeholder.
+- Il pack grafico CC0 e opzionale: `Frame` disegna il bordo in CSS, il
+  sito e completo senza.

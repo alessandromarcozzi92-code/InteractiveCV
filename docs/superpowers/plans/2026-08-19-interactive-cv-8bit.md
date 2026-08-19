@@ -2545,7 +2545,7 @@ modern JSX transform leaves no `React` binding in scope; it imports
 - Produces: a Pages deployment on every push to `main`; `dist/404.html` is a
   copy of `dist/index.html` so deep links survive a refresh.
 
-- [ ] **Step 1: Make the build emit the SPA fallback**
+- [x] **Step 1: Make the build emit the SPA fallback**
 
 Update the build script in `package.json`:
 
@@ -2553,7 +2553,7 @@ Update the build script in `package.json`:
 "build": "tsc -b && vite build && cp dist/index.html dist/404.html"
 ```
 
-- [ ] **Step 2: Verify the build locally**
+- [x] **Step 2: Verify the build locally**
 
 ```bash
 VITE_BASE_PATH=/InteractiveCV/ npm run build
@@ -2563,7 +2563,7 @@ test -f dist/404.html && echo "404 fallback present"
 
 Expected: an asset path prefixed with `/InteractiveCV/`, and the fallback line.
 
-- [ ] **Step 3: Add the workflow**
+- [x] **Step 3: Add the workflow**
 
 Create `.github/workflows/deploy.yml`:
 
@@ -2614,7 +2614,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-- [ ] **Step 4: Document the project**
+- [x] **Step 4: Document the project**
 
 Replace `README.md`:
 
@@ -2647,7 +2647,7 @@ Passaggio a dominio custom: impostare `VITE_BASE_PATH=/` nel workflow e
 aggiungere `public/CNAME` con il dominio.
 ```
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add package.json README.md .github
@@ -2658,6 +2658,19 @@ git commit -m "ci: deploy to GitHub Pages with SPA fallback"
 
 In GitHub: Settings -> Pages -> Source: "GitHub Actions". Then push and check
 the workflow run.
+
+**Deviation from the plan (Steps 3 and 4):** the workflow pins
+`node-version: 22` rather than `20`. Vite 8 requires
+`^20.19.0 || >=22.12.0`, which a bare `20` satisfies only because the
+runner currently installs 20.19.x.
+
+README.md was extended rather than replaced: the planned text drops the
+project-intent sections written earlier at the user's request. The
+planned Sviluppo / Contenuti / Deploy sections were merged in and the
+status section updated.
+
+Step 6 (enabling Pages in repository settings) is the repository owner's
+to do and cannot be done from here.
 
 ---
 
