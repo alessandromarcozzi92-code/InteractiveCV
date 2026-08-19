@@ -1,9 +1,11 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import { cv } from '../../data/cv'
 import { NavMenu } from './NavMenu'
 import styles from './ArcadeShell.module.css'
 
 export function ArcadeShell() {
+  const location = useLocation()
+
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
@@ -15,7 +17,8 @@ export function ArcadeShell() {
         </h1>
         <NavMenu />
       </header>
-      <main id="screen">
+      {/* Keyed by pathname so React remounts it and the wipe restarts. */}
+      <main id="screen" key={location.pathname} className="wipe">
         <Outlet />
       </main>
     </div>

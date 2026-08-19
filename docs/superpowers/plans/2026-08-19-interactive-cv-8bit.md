@@ -2134,7 +2134,7 @@ styling lives in JSX.
   - `useAnimatedNumber(target: number, durationMs?: number, steps?: number): number`
   - `.wipe` animation class applied to `<main>`, keyed by pathname.
 
-- [ ] **Step 1: Write the failing reduced-motion test**
+- [x] **Step 1: Write the failing reduced-motion test**
 
 Create `src/hooks/usePrefersReducedMotion.test.ts`:
 
@@ -2155,12 +2155,12 @@ test('reports true when the user asked for reduced motion', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/hooks/usePrefersReducedMotion.test.ts`
 Expected: FAIL — cannot resolve `./usePrefersReducedMotion`.
 
-- [ ] **Step 3: Implement usePrefersReducedMotion**
+- [x] **Step 3: Implement usePrefersReducedMotion**
 
 Create `src/hooks/usePrefersReducedMotion.ts`:
 
@@ -2183,7 +2183,7 @@ export function usePrefersReducedMotion(): boolean {
 }
 ```
 
-- [ ] **Step 4: Write the failing typewriter test**
+- [x] **Step 4: Write the failing typewriter test**
 
 Create `src/hooks/useTypewriter.test.ts`:
 
@@ -2215,12 +2215,12 @@ test('shows the full text immediately under reduced motion', () => {
 })
 ```
 
-- [ ] **Step 5: Run to verify it fails**
+- [x] **Step 5: Run to verify it fails**
 
 Run: `npm test src/hooks/useTypewriter.test.ts`
 Expected: FAIL — cannot resolve `./useTypewriter`.
 
-- [ ] **Step 6: Implement useTypewriter**
+- [x] **Step 6: Implement useTypewriter**
 
 Create `src/hooks/useTypewriter.ts`:
 
@@ -2251,12 +2251,12 @@ export function useTypewriter(text: string, speedMs = 35): string {
 }
 ```
 
-- [ ] **Step 7: Run the hook tests to verify they pass**
+- [x] **Step 7: Run the hook tests to verify they pass**
 
 Run: `npm test src/hooks`
 Expected: PASS, all hook tests.
 
-- [ ] **Step 8: Add the motion stylesheet**
+- [x] **Step 8: Add the motion stylesheet**
 
 Create `src/styles/motion.css`:
 
@@ -2303,7 +2303,7 @@ Import it from `src/index.css`, right after the tokens import:
 @import './styles/motion.css';
 ```
 
-- [ ] **Step 9: Apply the blink and the typewriter to the title screen**
+- [x] **Step 9: Apply the blink and the typewriter to the title screen**
 
 Replace the body of `src/routes/TitleScreen.tsx`:
 
@@ -2336,7 +2336,7 @@ export function TitleScreen() {
 Note: `App.test.tsx` asserts on the `PRESS START` button text, which the
 typewriter never touches, so it keeps passing.
 
-- [ ] **Step 10: Apply the wipe to route changes**
+- [x] **Step 10: Apply the wipe to route changes**
 
 In `src/components/layout/ArcadeShell.tsx`, import `useLocation` and key the
 `<main>` so React remounts it on every route change, restarting the animation:
@@ -2355,12 +2355,12 @@ and replace the `<main>` element with:
 
 adding `const location = useLocation()` at the top of the component body.
 
-- [ ] **Step 11: Run the full suite**
+- [x] **Step 11: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 12: Commit**
+- [x] **Step 12: Commit**
 
 ```bash
 git add src
