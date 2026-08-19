@@ -2095,7 +2095,8 @@ git commit -m "feat: render CV sections from the data module"
 ### Task 9: Motion — reduced-motion guard, typewriter, counters, screen wipe
 
 **Files:**
-- Create: `src/hooks/usePrefersReducedMotion.ts`, `src/hooks/useTypewriter.ts`
+- Create: `src/hooks/usePrefersReducedMotion.ts`, `src/hooks/useTypewriter.ts`, `src/hooks/useAnimatedNumber.ts`
+- Modify: `src/components/ui/StatBar.tsx`, `src/components/ui/StatBar.module.css`
 - Create: `src/styles/motion.css`
 - Modify: `src/index.css`, `src/routes/TitleScreen.tsx`, `src/routes/TitleScreen.module.css`, `src/components/layout/ArcadeShell.tsx`, `src/components/layout/ArcadeShell.module.css`
 - Test: `src/hooks/usePrefersReducedMotion.test.ts`, `src/hooks/useTypewriter.test.ts`
@@ -2106,6 +2107,7 @@ git commit -m "feat: render CV sections from the data module"
   - `usePrefersReducedMotion(): boolean`
   - `useTypewriter(text: string, speedMs?: number): string` — returns the
     full text immediately when reduced motion is requested.
+  - `useAnimatedNumber(target: number, durationMs?: number, steps?: number): number`
   - `.wipe` animation class applied to `<main>`, keyed by pathname.
 
 - [ ] **Step 1: Write the failing reduced-motion test**
@@ -2341,6 +2343,158 @@ git add src
 git commit -m "feat: add typewriter, blink, and screen wipe with reduced-motion guards"
 ```
 
+- [ ] **Step 13: Write the failing counter test**
+
+Create `src/hooks/useAnimatedNumber.test.ts`:
+
+```ts
+import { act, renderHook } from '@testing-library/react'
+import { useAnimatedNumber } from './useAnimatedNumber'
+import { setReducedMotion } from '../test/setup'
+
+test('counts up to the target in discrete steps', () => {
+  vi.useFakeTimers()
+  const { result } = renderHook(() => useAnimatedNumber(20, 200, 20))
+
+  expect(result.current).toBe(0)
+  act(() => {
+    vi.advanceTimersByTime(100)
+  })
+  expect(result.current).toBe(10)
+  act(() => {
+    vi.advanceTimersByTime(100)
+  })
+  expect(result.current).toBe(20)
+  vi.useRealTimers()
+})
+
+test('shows the target immediately under reduced motion', () => {
+  setReducedMotion(true)
+  const { result } = renderHook(() => useAnimatedNumber(20, 200, 20))
+  expect(result.current).toBe(20)
+})
+```
+
+- [ ] **Step 14: Run to verify it fails**
+
+Run: `npm test src/hooks/useAnimatedNumber.test.ts`
+Expected: FAIL — cannot resolve `./useAnimatedNumber`.
+
+- [ ] **Step 15: Implement useAnimatedNumber**
+
+Create `src/hooks/useAnimatedNumber.ts`:
+
+```ts
+import { useEffect, useState } from 'react'
+import { usePrefersReducedMotion } from './usePrefersReducedMotion'
+
+export function useAnimatedNumber(target: number, durationMs = 600, steps = 20): number {
+  const reduced = usePrefersReducedMotion()
+  const [value, setValue] = useState(reduced ? target : 0)
+
+  useEffect(() => {
+    if (reduced) {
+      setValue(target)
+      return
+    }
+
+    let tick = 0
+    setValue(0)
+    const timer = setInterval(() => {
+      tick += 1
+      if (tick >= steps) {
+        clearInterval(timer)
+        setValue(target)
+        return
+      }
+      setValue(Math.round((target * tick) / steps))
+    }, durationMs / steps)
+
+    return () => clearInterval(timer)
+  }, [target, durationMs, steps, reduced])
+
+  return value
+}
+```
+
+- [ ] **Step 16: Count the level on the title screen**
+
+The counter goes on the title screen, not on `/stats`: the `StatsScreen`
+test asserts the level synchronously, and animating it there would force
+that assertion to become asynchronous for no user-visible gain.
+
+In `src/routes/TitleScreen.tsx`, add the import and the hook call, then use
+the animated value in the subtitle:
+
+```tsx
+import { useAnimatedNumber } from '../hooks/useAnimatedNumber'
+```
+
+```tsx
+  const level = useAnimatedNumber(cv.profile.level, 600)
+```
+
+```tsx
+      <p className={styles.subtitle}>
+        {cv.profile.class} · Lv.{level}
+      </p>
+```
+
+- [ ] **Step 17: Animate the StatBar fill**
+
+Give each filled cell its index so the blocks light up in sequence. In
+`src/components/ui/StatBar.tsx`, extend the cell element:
+
+```tsx
+          <span
+            key={index}
+            className={styles.cell}
+            data-state={index < filled ? 'on' : 'off'}
+            style={{ '--i': index } as React.CSSProperties}
+            aria-hidden="true"
+          />
+```
+
+Add the keyframes to `src/components/ui/StatBar.module.css`:
+
+```css
+@keyframes cell-in {
+  from {
+    background: var(--c-bg);
+  }
+  to {
+    background: var(--c-hp);
+  }
+}
+
+.cell[data-state='on'] {
+  animation: cell-in 40ms steps(1, end) both;
+  animation-delay: calc(var(--i) * 40ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell[data-state='on'] {
+    animation: none;
+    background: var(--c-hp);
+  }
+}
+```
+
+The `aria-valuenow` attribute never animates, so the accessible value is
+correct from the first frame and the StatBar tests keep passing.
+
+- [ ] **Step 18: Run the full suite**
+
+Run: `npm test`
+Expected: PASS, all tests.
+
+- [ ] **Step 19: Commit**
+
+```bash
+git add src
+git commit -m "feat: animate level counter and stat bar fill"
+```
+
 ---
 
 ### Task 10: GitHub Pages deploy
@@ -2478,5 +2632,8 @@ These are outside the plan's control and block nothing until the end:
 2. `src/data/cv.ts` — replace placeholder content with real CV data.
 3. Optional CC0 asset pack (Kenney UI): the components render fully without
    it — `Frame` draws its notched border in CSS. Dropping PNG frames into
-   `public/assets/ui/` and switching `Frame.module.css` to `border-image`
-   is a self-contained follow-up.
+   `public/assets/ui/`, switching `Frame.module.css` to `border-image`, and
+   adding the `Icon` wrapper named in the spec is a self-contained follow-up.
+   The `Icon` component is deliberately not part of this plan: with no asset
+   pack chosen yet, it would have nothing to render, and no screen depends on
+   it — every label in the plan is text.
