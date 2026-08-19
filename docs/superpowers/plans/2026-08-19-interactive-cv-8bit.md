@@ -194,7 +194,7 @@ git commit -m "chore: scaffold Vite React TypeScript app with Vitest harness"
   - `clamp(value: number, min: number, max: number): number`
   - `formatPeriod(from: string, to: string): string`
 
-- [ ] **Step 1: Write the failing helper tests**
+- [x] **Step 1: Write the failing helper tests**
 
 Create `src/lib/format.test.ts`:
 
@@ -216,12 +216,12 @@ test('formatPeriod keeps the NOW sentinel', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/lib/format.test.ts`
 Expected: FAIL — cannot resolve `./format`.
 
-- [ ] **Step 3: Implement the helpers**
+- [x] **Step 3: Implement the helpers**
 
 Create `src/lib/format.ts`:
 
@@ -235,7 +235,7 @@ export function formatPeriod(from: string, to: string): string {
 }
 ```
 
-- [ ] **Step 4: Write the failing data-integrity test**
+- [x] **Step 4: Write the failing data-integrity test**
 
 Create `src/data/cv.test.ts`:
 
@@ -260,12 +260,12 @@ test('the profile exposes at least one contact link', () => {
 })
 ```
 
-- [ ] **Step 5: Run to verify it fails**
+- [x] **Step 5: Run to verify it fails**
 
 Run: `npm test src/data/cv.test.ts`
 Expected: FAIL — cannot resolve `./cv`.
 
-- [ ] **Step 6: Write the data module with placeholder content**
+- [x] **Step 6: Write the data module with placeholder content**
 
 Create `src/data/cv.ts`:
 
@@ -386,12 +386,12 @@ export const cv: CV = {
 }
 ```
 
-- [ ] **Step 7: Run the tests to verify they pass**
+- [x] **Step 7: Run the tests to verify they pass**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/data src/lib
