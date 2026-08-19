@@ -48,7 +48,7 @@ Testing Library, @fontsource pixel fonts, GitHub Actions.
   matchers, and a controllable `matchMedia` stub exported as
   `setReducedMotion(value: boolean)` from `src/test/setup.ts`.
 
-- [ ] **Step 1: Scaffold Vite into the existing repo**
+- [x] **Step 1: Scaffold Vite into the existing repo**
 
 The repo already contains `README.md` and `docs/`, so scaffold into a temp
 directory and copy over it.
@@ -61,7 +61,7 @@ npm install
 npm install -D vitest jsdom @testing-library/react @testing-library/jest-dom @testing-library/user-event
 ```
 
-- [ ] **Step 2: Configure Vitest inside the Vite config**
+- [x] **Step 2: Configure Vitest inside the Vite config**
 
 Replace `vite.config.ts` with:
 
@@ -94,7 +94,7 @@ Add the test scripts to `package.json`:
 }
 ```
 
-- [ ] **Step 3: Write the test setup file**
+- [x] **Step 3: Write the test setup file**
 
 Create `src/test/setup.ts`:
 
@@ -126,7 +126,7 @@ beforeEach(() => {
 })
 ```
 
-- [ ] **Step 4: Write the failing smoke test**
+- [x] **Step 4: Write the failing smoke test**
 
 Create `src/App.test.tsx`:
 
@@ -140,12 +140,12 @@ test('renders the arcade shell root landmark', () => {
 })
 ```
 
-- [ ] **Step 5: Run the test to verify it fails**
+- [x] **Step 5: Run the test to verify it fails**
 
 Run: `npm test`
 Expected: FAIL — the scaffolded `App` renders the Vite demo, no `main` landmark.
 
-- [ ] **Step 6: Replace App with a minimal shell**
+- [x] **Step 6: Replace App with a minimal shell**
 
 Replace `src/App.tsx` with:
 
@@ -158,12 +158,12 @@ export default function App() {
 Delete the scaffold leftovers: `src/App.css`, `src/assets/react.svg`.
 Empty `src/index.css` — real tokens arrive in Task 3.
 
-- [ ] **Step 7: Run the tests to verify they pass**
+- [x] **Step 7: Run the tests to verify they pass**
 
 Run: `npm test`
 Expected: PASS, 1 test.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add -A
