@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { clamp } from '../../lib/format'
 import styles from './StatBar.module.css'
 
@@ -27,6 +28,7 @@ export function StatBar({ label, level, blocks = 20 }: StatBarProps) {
             key={index}
             className={styles.cell}
             data-state={index < filled ? 'on' : 'off'}
+            style={{ '--i': index } as CSSProperties}
             aria-hidden="true"
           />
         ))}

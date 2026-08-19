@@ -2367,7 +2367,7 @@ git add src
 git commit -m "feat: add typewriter, blink, and screen wipe with reduced-motion guards"
 ```
 
-- [ ] **Step 13: Write the failing counter test**
+- [x] **Step 13: Write the failing counter test**
 
 Create `src/hooks/useAnimatedNumber.test.ts`:
 
@@ -2399,12 +2399,12 @@ test('shows the target immediately under reduced motion', () => {
 })
 ```
 
-- [ ] **Step 14: Run to verify it fails**
+- [x] **Step 14: Run to verify it fails**
 
 Run: `npm test src/hooks/useAnimatedNumber.test.ts`
 Expected: FAIL — cannot resolve `./useAnimatedNumber`.
 
-- [ ] **Step 15: Implement useAnimatedNumber**
+- [x] **Step 15: Implement useAnimatedNumber**
 
 Create `src/hooks/useAnimatedNumber.ts`:
 
@@ -2441,7 +2441,7 @@ export function useAnimatedNumber(target: number, durationMs = 600, steps = 20):
 }
 ```
 
-- [ ] **Step 16: Count the level on the title screen**
+- [x] **Step 16: Count the level on the title screen**
 
 The counter goes on the title screen, not on `/stats`: the `StatsScreen`
 test asserts the level synchronously, and animating it there would force
@@ -2464,7 +2464,7 @@ import { useAnimatedNumber } from '../hooks/useAnimatedNumber'
       </p>
 ```
 
-- [ ] **Step 17: Animate the StatBar fill**
+- [x] **Step 17: Animate the StatBar fill**
 
 Give each filled cell its index so the blocks light up in sequence. In
 `src/components/ui/StatBar.tsx`, extend the cell element:
@@ -2507,17 +2507,30 @@ Add the keyframes to `src/components/ui/StatBar.module.css`:
 The `aria-valuenow` attribute never animates, so the accessible value is
 correct from the first frame and the StatBar tests keep passing.
 
-- [ ] **Step 18: Run the full suite**
+- [x] **Step 18: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 19: Commit**
+- [x] **Step 19: Commit**
 
 ```bash
 git add src
 git commit -m "feat: animate level counter and stat bar fill"
 ```
+
+**Deviation from the plan (Steps 6, 15 and 17):** the planned useTypewriter
+and useAnimatedNumber both reset their counter with a synchronous setState
+inside the effect, which oxlint flags as a cascading render
+(`react(set-state-in-effect)`) — the effect runs, sets state, and forces a
+second render pass on every input change. Both now hold a single
+`{ input, progress }` object reset during render when the input changes,
+which is React's documented pattern for deriving state from props. Behaviour
+and the planned tests are unchanged.
+
+Step 17 typed the CSS custom property with `React.CSSProperties`, but the
+modern JSX transform leaves no `React` binding in scope; it imports
+`type { CSSProperties } from 'react'` instead.
 
 ---
 

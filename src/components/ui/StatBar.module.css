@@ -26,3 +26,24 @@
   color: var(--c-accent);
   text-align: right;
 }
+
+@keyframes cell-in {
+  from {
+    background: var(--c-bg);
+  }
+  to {
+    background: var(--c-hp);
+  }
+}
+
+.cell[data-state='on'] {
+  animation: cell-in 40ms steps(1, end) both;
+  animation-delay: calc(var(--i) * 40ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell[data-state='on'] {
+    animation: none;
+    background: var(--c-hp);
+  }
+}
