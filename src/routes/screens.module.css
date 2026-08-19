@@ -1,0 +1,63 @@
+.rows {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 12ch 1fr;
+  gap: var(--space-3);
+}
+
+.key {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--c-accent);
+}
+
+.value {
+  margin: 0;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.groupTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--c-accent-2);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: 14px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag {
+  border: 2px solid var(--c-accent-2);
+  padding: 0 var(--space-2);
+  font-size: 13px;
+}

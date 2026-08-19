@@ -1649,7 +1649,7 @@ git commit -m "feat: add routing, title screen, and section screen skeletons"
   - `InventoryScreen({ items = cv.inventory }: { items?: InventoryItem[] })`
   - `ContactScreen({ profile = cv.profile }: { profile?: Profile })`
 
-- [ ] **Step 1: Write the failing screen tests**
+- [x] **Step 1: Write the failing screen tests**
 
 Create `src/routes/SkillsScreen.test.tsx`:
 
@@ -1782,12 +1782,12 @@ test('renders a mailto link and the external links', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify they fail**
+- [x] **Step 2: Run to verify they fail**
 
 Run: `npm test src/routes`
 Expected: FAIL — the screens ignore props and render "Contenuto in arrivo."
 
-- [ ] **Step 3: Add the shared screen styles**
+- [x] **Step 3: Add the shared screen styles**
 
 Create `src/routes/screens.module.css`:
 
@@ -1853,7 +1853,7 @@ Create `src/routes/screens.module.css`:
 }
 ```
 
-- [ ] **Step 4: Implement StatsScreen**
+- [x] **Step 4: Implement StatsScreen**
 
 Replace `src/routes/StatsScreen.tsx`:
 
@@ -1889,7 +1889,7 @@ export function StatsScreen({ profile = cv.profile }: StatsScreenProps) {
 }
 ```
 
-- [ ] **Step 5: Implement SkillsScreen**
+- [x] **Step 5: Implement SkillsScreen**
 
 Replace `src/routes/SkillsScreen.tsx`:
 
@@ -1925,7 +1925,7 @@ export function SkillsScreen({ skills = cv.skills }: SkillsScreenProps) {
 }
 ```
 
-- [ ] **Step 6: Implement QuestsScreen**
+- [x] **Step 6: Implement QuestsScreen**
 
 Replace `src/routes/QuestsScreen.tsx`:
 
@@ -1973,7 +1973,7 @@ export function QuestsScreen({ quests = cv.quests }: QuestsScreenProps) {
 }
 ```
 
-- [ ] **Step 7: Implement TrainingScreen and InventoryScreen**
+- [x] **Step 7: Implement TrainingScreen and InventoryScreen**
 
 Replace `src/routes/TrainingScreen.tsx`:
 
@@ -2048,7 +2048,7 @@ export function InventoryScreen({ items = cv.inventory }: InventoryScreenProps) 
 }
 ```
 
-- [ ] **Step 8: Implement ContactScreen and add the PDF placeholder**
+- [x] **Step 8: Implement ContactScreen and add the PDF placeholder**
 
 Replace `src/routes/ContactScreen.tsx`:
 
@@ -2090,17 +2090,29 @@ Add a placeholder PDF so the link resolves in dev:
 printf '%%PDF-1.4\n%% placeholder - sostituire con il CV reale\n' > public/cv.pdf
 ```
 
-- [ ] **Step 9: Run the full suite**
+- [x] **Step 9: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 10: Commit**
+- [x] **Step 10: Commit**
 
 ```bash
 git add src public/cv.pdf
 git commit -m "feat: render CV sections from the data module"
 ```
+
+**Deviation from the plan (Step 8):** the planned ContactScreen hardcoded
+`href="/cv.pdf"`. Under GitHub Pages the site is served from
+`/InteractiveCV/`, so that absolute path would 404 in production while
+passing every test (BASE_URL is `/` under jsdom). The href is built from
+`import.meta.env.BASE_URL` instead. Verified: a
+`VITE_BASE_PATH=/InteractiveCV/ npm run build` emits
+`/InteractiveCV/cv.pdf`.
+
+Minor: the inline `style={{ margin: 0 }}` on `<dd>` in StatsScreen and
+InventoryScreen became a `.value` class in screens.module.css, so no
+styling lives in JSX.
 
 ---
 
