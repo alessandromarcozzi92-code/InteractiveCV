@@ -1,1 +1,60 @@
 # InteractiveCV
+
+CV personale come sito multipagina con estetica arcade 8-bit. Invece di
+scorrere un documento, si naviga tra schermate in stile console:
+title screen, profilo giocatore, skill tree, quest log.
+
+## Intento
+
+Trasformare la lettura di un curriculum in un'esperienza memorabile,
+senza sacrificare accessibilita e leggibilita. La metafora videoludica
+e solo linguaggio visivo: **non e un videogioco**. Niente game loop,
+niente fisica, niente livelli.
+
+Tre principi guidano il progetto:
+
+- **Nessun contenuto nascosto.** Niente e "da sbloccare": ogni sezione
+  e raggiungibile dal menu in un click. Un recruiter deve trovare cio
+  che cerca subito.
+- **Doppia navigazione, stessa logica.** Tastiera (frecce/WASD, Enter,
+  Esc) e mouse/touch sono equivalenti. Ogni voce di menu e un link
+  reale, indicizzabile e apribile in nuova scheda.
+- **Estetica retro, standard moderni.** Font pixel e cornici 9-slice,
+  ma contrasto AA, focus sempre visibile e rispetto di
+  `prefers-reduced-motion`.
+
+## Sezioni
+
+| Route | Schermata | Contenuto |
+|---|---|---|
+| `/` | Title screen | Nome, "PRESS START", menu iniziale |
+| `/stats` | Player Profile | Dati personali, bio |
+| `/skills` | Skill Tree | Competenze con barre di livello |
+| `/quests` | Quest Log | Esperienze lavorative |
+| `/training` | Training Grounds | Istruzione e certificazioni |
+| `/inventory` | Inventory | Lingue e soft skill come passive abilities |
+| `/contact` | Contact | Contatti e "SAVE GAME" -> download del CV in PDF |
+
+## Stack
+
+Vite + React + TypeScript, React Router, CSS nativo con custom
+properties e CSS Modules, Vitest + React Testing Library. Asset grafici
+da pack CC0. Deploy su GitHub Pages via GitHub Actions.
+
+## Architettura
+
+Due confini tengono il progetto manutenibile:
+
+- **Contenuti**: tutto il CV vive in `src/data/cv.ts`, tipizzato. Le
+  pagine non contengono nessuna stringa di contenuto.
+- **Grafica**: ogni dettaglio pixel-art vive in `components/ui/`.
+  Cambiare pack grafico non tocca le pagine.
+
+## Documentazione
+
+- Design: [docs/superpowers/specs/2026-08-19-interactive-cv-8bit-design.md](docs/superpowers/specs/2026-08-19-interactive-cv-8bit-design.md)
+- Piano di implementazione: [docs/superpowers/plans/2026-08-19-interactive-cv-8bit.md](docs/superpowers/plans/2026-08-19-interactive-cv-8bit.md)
+
+## Stato
+
+Design e piano approvati. Implementazione non ancora iniziata.
