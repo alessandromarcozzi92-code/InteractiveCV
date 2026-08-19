@@ -1371,7 +1371,7 @@ navigation role and an accessible name. The two keyboard tests now query
   - Each screen component exported by name, e.g. `export function SkillsScreen()`.
   - `App` mounts `<BrowserRouter basename={import.meta.env.BASE_URL}>` around `<AppRoutes />`.
 
-- [ ] **Step 1: Write the failing routing test**
+- [x] **Step 1: Write the failing routing test**
 
 Create `src/routes/routes.test.tsx`:
 
@@ -1416,12 +1416,12 @@ test('section screens are wrapped in the arcade shell', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/routes/routes.test.tsx`
 Expected: FAIL — cannot resolve `./routes`.
 
-- [ ] **Step 3: Create the title screen**
+- [x] **Step 3: Create the title screen**
 
 Create `src/routes/TitleScreen.module.css`:
 
@@ -1472,7 +1472,7 @@ export function TitleScreen() {
 }
 ```
 
-- [ ] **Step 4: Create the six section screens and the not-found screen**
+- [x] **Step 4: Create the six section screens and the not-found screen**
 
 Each screen is a heading plus a placeholder paragraph for now; Task 8 fills
 in the real, data-driven bodies.
@@ -1553,7 +1553,7 @@ export function NotFoundScreen() {
 }
 ```
 
-- [ ] **Step 5: Wire the route tree**
+- [x] **Step 5: Wire the route tree**
 
 Create `src/routes/routes.tsx`:
 
@@ -1587,7 +1587,7 @@ export function AppRoutes() {
 }
 ```
 
-- [ ] **Step 6: Mount the router in App**
+- [x] **Step 6: Mount the router in App**
 
 Replace `src/App.tsx`:
 
@@ -1617,12 +1617,12 @@ test('boots on the title screen', () => {
 })
 ```
 
-- [ ] **Step 7: Run the full suite**
+- [x] **Step 7: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src

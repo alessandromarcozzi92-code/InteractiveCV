@@ -1,0 +1,20 @@
+.screen {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(24px, 6vw, 48px);
+  color: var(--c-accent);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--c-ink);
+}
