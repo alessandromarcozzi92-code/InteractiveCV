@@ -913,7 +913,7 @@ git commit -m "feat: add StatBar and PixelButton components"
   Next keys: ArrowRight, ArrowDown, d/D. Previous keys: ArrowLeft, ArrowUp,
   a/A. Activate: Enter, Space. Cancel: Escape. Movement wraps at both ends.
 
-- [ ] **Step 1: Write the failing hook test**
+- [x] **Step 1: Write the failing hook test**
 
 Create `src/hooks/useMenuNavigation.test.ts`:
 
@@ -979,12 +979,12 @@ test('ignores unrelated keys', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/hooks/useMenuNavigation.test.ts`
 Expected: FAIL — cannot resolve `./useMenuNavigation`.
 
-- [ ] **Step 3: Implement the hook**
+- [x] **Step 3: Implement the hook**
 
 Create `src/hooks/useMenuNavigation.ts`:
 
@@ -1043,12 +1043,12 @@ export function useMenuNavigation({
 }
 ```
 
-- [ ] **Step 4: Run the tests to verify they pass**
+- [x] **Step 4: Run the tests to verify they pass**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/hooks
