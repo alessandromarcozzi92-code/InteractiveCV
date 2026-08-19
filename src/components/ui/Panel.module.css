@@ -1,0 +1,10 @@
+.title {
+  margin: 0 0 var(--space-3);
+  font-size: 18px;
+  color: var(--c-accent);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-3);
+}

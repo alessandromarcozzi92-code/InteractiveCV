@@ -1,0 +1,24 @@
+:root {
+  --c-bg: #10131c;
+  --c-panel: #1d2233;
+  --c-ink: #e8e6da;
+  --c-accent: #f2c94c;
+  --c-accent-2: #38b6ff;
+  --c-hp: #6ee06e;
+
+  --font-display: 'Silkscreen', monospace;
+  --font-body: 'Pixelify Sans', monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+
+  --border-w: 4px;
+  --measure: 65ch;
+
+  --z-shell: 10;
+  --z-overlay: 20;
+}

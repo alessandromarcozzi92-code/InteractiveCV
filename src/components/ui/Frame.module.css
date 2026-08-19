@@ -1,0 +1,15 @@
+.frame {
+  background: var(--c-panel);
+  border: var(--border-w) solid var(--c-ink);
+  box-shadow:
+    0 0 0 var(--border-w) var(--c-bg),
+    var(--space-1) var(--space-1) 0 var(--border-w) rgb(0 0 0 / 0.6);
+  padding: var(--space-4);
+  /* Notched pixel corners: no radii, no anti-aliasing. */
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}

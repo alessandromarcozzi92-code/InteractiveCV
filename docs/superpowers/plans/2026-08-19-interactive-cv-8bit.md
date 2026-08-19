@@ -416,7 +416,7 @@ git commit -m "feat: add typed CV data model with placeholder content"
   - `<Panel title: string; as?: 'section' | 'article' | 'li'; className?: string; children: ReactNode />`
     renders `title` as an `<h2>`.
 
-- [ ] **Step 1: Install the pixel fonts**
+- [x] **Step 1: Install the pixel fonts**
 
 ```bash
 npm install @fontsource/silkscreen @fontsource/pixelify-sans
@@ -426,7 +426,7 @@ Silkscreen carries headings and UI labels; Pixelify Sans carries body copy
 — it stays legible at 16px, which Press Start 2P does not. Both ship
 self-hosted, so no external CDN is involved.
 
-- [ ] **Step 2: Write the design tokens**
+- [x] **Step 2: Write the design tokens**
 
 Create `src/styles/tokens.css`:
 
@@ -457,7 +457,7 @@ Create `src/styles/tokens.css`:
 }
 ```
 
-- [ ] **Step 3: Write the global styles**
+- [x] **Step 3: Write the global styles**
 
 Replace `src/index.css`:
 
@@ -514,7 +514,7 @@ a {
 
 Confirm `src/main.tsx` imports `./index.css` (the scaffold already does).
 
-- [ ] **Step 4: Write the failing Frame test**
+- [x] **Step 4: Write the failing Frame test**
 
 Create `src/components/ui/Frame.test.tsx`:
 
@@ -538,12 +538,12 @@ test('keeps the caller className alongside its own', () => {
 })
 ```
 
-- [ ] **Step 5: Run to verify it fails**
+- [x] **Step 5: Run to verify it fails**
 
 Run: `npm test src/components/ui/Frame.test.tsx`
 Expected: FAIL — cannot resolve `./Frame`.
 
-- [ ] **Step 6: Implement Frame**
+- [x] **Step 6: Implement Frame**
 
 Create `src/components/ui/Frame.module.css`:
 
@@ -585,7 +585,7 @@ export function Frame({ children, as: Tag = 'div', className }: FrameProps) {
 }
 ```
 
-- [ ] **Step 7: Write the failing Panel test**
+- [x] **Step 7: Write the failing Panel test**
 
 Create `src/components/ui/Panel.test.tsx`:
 
@@ -604,12 +604,12 @@ test('renders its children', () => {
 })
 ```
 
-- [ ] **Step 8: Run to verify it fails**
+- [x] **Step 8: Run to verify it fails**
 
 Run: `npm test src/components/ui/Panel.test.tsx`
 Expected: FAIL — cannot resolve `./Panel`.
 
-- [ ] **Step 9: Implement Panel**
+- [x] **Step 9: Implement Panel**
 
 Create `src/components/ui/Panel.module.css`:
 
@@ -650,12 +650,12 @@ export function Panel({ title, children, as = 'section', className }: PanelProps
 }
 ```
 
-- [ ] **Step 10: Run the tests to verify they pass**
+- [x] **Step 10: Run the tests to verify they pass**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 11: Commit**
+- [x] **Step 11: Commit**
 
 ```bash
 git add -A
