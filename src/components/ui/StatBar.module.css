@@ -1,0 +1,28 @@
+.row {
+  display: grid;
+  grid-template-columns: 12ch 1fr 6ch;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.track {
+  display: flex;
+  gap: 2px;
+}
+
+.cell {
+  flex: 1;
+  height: 14px;
+  background: var(--c-bg);
+  border: 2px solid var(--c-bg);
+}
+
+.cell[data-state='on'] {
+  background: var(--c-hp);
+}
+
+.value {
+  font-family: var(--font-display);
+  color: var(--c-accent);
+  text-align: right;
+}

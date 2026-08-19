@@ -1,0 +1,18 @@
+.button {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-display);
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--c-bg);
+  background: var(--c-accent);
+  border: var(--border-w) solid var(--c-ink);
+  box-shadow: var(--space-1) var(--space-1) 0 0 var(--c-ink);
+  cursor: pointer;
+}
+
+.button:active {
+  transform: translate(var(--space-1), var(--space-1));
+  box-shadow: none;
+}

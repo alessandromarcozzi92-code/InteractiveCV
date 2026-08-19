@@ -680,7 +680,7 @@ git commit -m "feat: add design tokens, pixel fonts, and Frame/Panel primitives"
   - `<PixelButton children: ReactNode; onClick?: () => void; href?: string; download?: boolean />`
     — renders `<a>` when `href` is set, otherwise `<button type="button">`.
 
-- [ ] **Step 1: Write the failing StatBar test**
+- [x] **Step 1: Write the failing StatBar test**
 
 Create `src/components/ui/StatBar.test.tsx`:
 
@@ -715,12 +715,12 @@ test('shows the level as text, not only as a bar', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/components/ui/StatBar.test.tsx`
 Expected: FAIL — cannot resolve `./StatBar`.
 
-- [ ] **Step 3: Implement StatBar**
+- [x] **Step 3: Implement StatBar**
 
 Create `src/components/ui/StatBar.module.css`:
 
@@ -797,7 +797,7 @@ export function StatBar({ label, level, blocks = 20 }: StatBarProps) {
 }
 ```
 
-- [ ] **Step 4: Write the failing PixelButton test**
+- [x] **Step 4: Write the failing PixelButton test**
 
 Create `src/components/ui/PixelButton.test.tsx`:
 
@@ -825,12 +825,12 @@ test('renders a download link when href is given', () => {
 })
 ```
 
-- [ ] **Step 5: Run to verify it fails**
+- [x] **Step 5: Run to verify it fails**
 
 Run: `npm test src/components/ui/PixelButton.test.tsx`
 Expected: FAIL — cannot resolve `./PixelButton`.
 
-- [ ] **Step 6: Implement PixelButton**
+- [x] **Step 6: Implement PixelButton**
 
 Create `src/components/ui/PixelButton.module.css`:
 
@@ -885,12 +885,12 @@ export function PixelButton({ children, onClick, href, download }: PixelButtonPr
 }
 ```
 
-- [ ] **Step 7: Run the tests to verify they pass**
+- [x] **Step 7: Run the tests to verify they pass**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/components/ui
