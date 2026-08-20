@@ -1,0 +1,36 @@
+.stars,
+.moon {
+  position: absolute;
+  display: block;
+}
+
+.stars {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  fill: var(--star);
+}
+
+.star[data-tier='1'] {
+  opacity: 1;
+}
+
+.star[data-tier='2'] {
+  opacity: 0.65;
+}
+
+.star[data-tier='3'] {
+  opacity: 0.35;
+}
+
+.moon {
+  top: 8%;
+  right: 12%;
+  width: 64px;
+  height: 64px;
+  fill: var(--star);
+  filter: drop-shadow(var(--glow-cyan));
+}

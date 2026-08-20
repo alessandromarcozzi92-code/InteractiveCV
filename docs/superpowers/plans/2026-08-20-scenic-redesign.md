@@ -298,7 +298,7 @@ git commit -m "feat: add environment palette, type scale, and depth scale"
 `x`, `y`, `width` and `height` are percentages of the viewBox (0-100), so
 the SVG scales to any viewport without recomputing.
 
-- [ ] **Step 1: Write the failing scene-data test**
+- [x] **Step 1: Write the failing scene-data test**
 
 Create `src/components/scenery/sceneData.test.ts`:
 
@@ -343,12 +343,12 @@ test('buildings tile the full width without gaps', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/components/scenery/sceneData.test.ts`
 Expected: FAIL — cannot resolve `./sceneData`.
 
-- [ ] **Step 3: Implement the scene data**
+- [x] **Step 3: Implement the scene data**
 
 `Math.random` is deliberately not used: the scene must be identical on
 every render and in every test run. `mulberry32` is a small, well-known
@@ -438,12 +438,12 @@ export function createSkyline(
 }
 ```
 
-- [ ] **Step 4: Run the scene-data test to verify it passes**
+- [x] **Step 4: Run the scene-data test to verify it passes**
 
 Run: `npm test src/components/scenery/sceneData.test.ts`
 Expected: PASS, 6 tests.
 
-- [ ] **Step 5: Write the failing Stars test**
+- [x] **Step 5: Write the failing Stars test**
 
 Create `src/components/scenery/Stars.test.tsx`:
 
@@ -474,12 +474,12 @@ test('Moon is hidden from assistive technology', () => {
 })
 ```
 
-- [ ] **Step 6: Run to verify it fails**
+- [x] **Step 6: Run to verify it fails**
 
 Run: `npm test src/components/scenery/Stars.test.tsx`
 Expected: FAIL — cannot resolve `./Moon`.
 
-- [ ] **Step 7: Implement Stars and Moon**
+- [x] **Step 7: Implement Stars and Moon**
 
 Create `src/components/scenery/Stars.tsx`:
 
@@ -585,12 +585,12 @@ two need for now; Task 3 extends it:
 }
 ```
 
-- [ ] **Step 8: Run the full suite**
+- [x] **Step 8: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add src/components/scenery
