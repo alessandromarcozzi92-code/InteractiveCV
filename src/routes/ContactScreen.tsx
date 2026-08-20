@@ -1,5 +1,6 @@
 import { cv } from '../data/cv'
 import type { Profile } from '../data/cv'
+import { ScreenHeader } from '../components/layout/ScreenHeader'
 import { Panel } from '../components/ui/Panel'
 import { PixelButton } from '../components/ui/PixelButton'
 import styles from './screens.module.css'
@@ -14,22 +15,25 @@ type ContactScreenProps = { profile?: Profile }
 
 export function ContactScreen({ profile = cv.profile }: ContactScreenProps) {
   return (
-    <Panel title="CONTACT">
-      <p>
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
-      </p>
-      <ul className={styles.tags}>
-        {profile.links.map((link) => (
-          <li key={link.url} className={styles.tag}>
-            <a href={link.url} target="_blank" rel="noreferrer">
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <PixelButton href={CV_FILE_URL} download>
-        SAVE GAME
-      </PixelButton>
-    </Panel>
+    <>
+      <ScreenHeader title="CONTACT" path="/contact" />
+      <Panel>
+        <p>
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        </p>
+        <ul className={styles.tags}>
+          {profile.links.map((link) => (
+            <li key={link.url} className={styles.tag}>
+              <a href={link.url} target="_blank" rel="noreferrer">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <PixelButton href={CV_FILE_URL} download>
+          SAVE GAME
+        </PixelButton>
+      </Panel>
+    </>
   )
 }

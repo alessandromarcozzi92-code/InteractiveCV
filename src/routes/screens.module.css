@@ -61,3 +61,8 @@
   padding: 0 var(--space-2);
   font-size: var(--fs-1);
 }
+
+.list > [data-first] {
+  border-left: var(--border-w) solid var(--c-accent);
+  padding-left: var(--space-3);
+}

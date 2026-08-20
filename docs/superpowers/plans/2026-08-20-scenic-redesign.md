@@ -1204,7 +1204,7 @@ This is the task where the existing routing tests are most at risk. They
 query `getByRole('heading', { level: 2, name: '...' })`, which does not care
 where in the tree the heading sits — so they must keep passing untouched.
 
-- [ ] **Step 1: Write the failing shell test**
+- [x] **Step 1: Write the failing shell test**
 
 Create `src/components/layout/ArcadeShell.test.tsx`:
 
@@ -1254,13 +1254,13 @@ test('renders the outlet content', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/components/layout/ArcadeShell.test.tsx`
 Expected: FAIL — no element carries `data-intensity`; the shell does not
 render the scenery yet.
 
-- [ ] **Step 3: Recompose the shell**
+- [x] **Step 3: Recompose the shell**
 
 The page scrolls; the header and the scenery are fixed. `main` is pushed
 down by the header's height, published as a custom property so the value
@@ -1380,7 +1380,7 @@ Replace `src/components/layout/ArcadeShell.module.css`:
 }
 ```
 
-- [ ] **Step 4: Move the heading out of Panel on every screen**
+- [x] **Step 4: Move the heading out of Panel on every screen**
 
 Seven edits. Each adds a `ScreenHeader` and drops the `title` prop from
 `Panel`, so exactly one `<h2>` survives per screen.
@@ -1479,7 +1479,7 @@ list item only:
 
 with `index` added to the map callback: `{quests.map((quest, index) => (`.
 
-- [ ] **Step 5: Give the raised quest its style**
+- [x] **Step 5: Give the raised quest its style**
 
 Append to `src/routes/screens.module.css`:
 
@@ -1493,19 +1493,19 @@ Append to `src/routes/screens.module.css`:
 A border, not only a glow: the spec forbids signalling with colour alone,
 and the border carries a shape difference as well as a hue.
 
-- [ ] **Step 6: Run the full suite**
+- [x] **Step 6: Run the full suite**
 
 Run: `npm test`
 Expected: PASS. The routing tests still find one level-2 heading per
 screen, now rendered by `ScreenHeader` instead of `Panel`. **No existing
 test file may be edited to reach this state.**
 
-- [ ] **Step 7: Build and lint**
+- [x] **Step 7: Build and lint**
 
 Run: `npm run build && npm run lint`
 Expected: both clean.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/components/layout src/routes
