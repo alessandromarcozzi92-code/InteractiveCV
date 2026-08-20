@@ -1524,7 +1524,7 @@ git commit -m "feat: recompose the shell around a fixed header and scenery"
 - Consumes: `Scenery` at `intensity="full"`
 - Produces: no new exports
 
-- [ ] **Step 1: Write the failing title screen test**
+- [x] **Step 1: Write the failing title screen test**
 
 Create `src/routes/TitleScreen.test.tsx`:
 
@@ -1562,12 +1562,12 @@ test('still offers the start control', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/routes/TitleScreen.test.tsx`
 Expected: FAIL — no `data-intensity` and no `data-scanlines` element.
 
-- [ ] **Step 3: Implement the scene**
+- [x] **Step 3: Implement the scene**
 
 Replace `src/routes/TitleScreen.tsx`:
 
@@ -1605,7 +1605,7 @@ export function TitleScreen() {
 }
 ```
 
-- [ ] **Step 4: Style the scene**
+- [x] **Step 4: Style the scene**
 
 Replace `src/routes/TitleScreen.module.css`:
 
@@ -1656,12 +1656,12 @@ Replace `src/routes/TitleScreen.module.css`:
 }
 ```
 
-- [ ] **Step 5: Run the full suite**
+- [x] **Step 5: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/routes
