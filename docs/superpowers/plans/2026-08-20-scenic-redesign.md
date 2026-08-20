@@ -618,7 +618,7 @@ git commit -m "feat: add deterministic scene data with stars and moon layers"
   - `<Scenery intensity?: 'full' | 'muted' />` — composes Sky, Stars, Moon
     and both Skyline planes; `muted` is the default
 
-- [ ] **Step 1: Write the failing Scenery test**
+- [x] **Step 1: Write the failing Scenery test**
 
 Create `src/components/scenery/Scenery.test.tsx`:
 
@@ -669,12 +669,12 @@ test('defaults to the muted intensity', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/components/scenery/Scenery.test.tsx`
 Expected: FAIL — cannot resolve `./Scenery`.
 
-- [ ] **Step 3: Implement Sky**
+- [x] **Step 3: Implement Sky**
 
 Create `src/components/scenery/Sky.tsx`:
 
@@ -686,7 +686,7 @@ export function Sky() {
 }
 ```
 
-- [ ] **Step 4: Implement Skyline**
+- [x] **Step 4: Implement Skyline**
 
 Create `src/components/scenery/Skyline.tsx`:
 
@@ -750,7 +750,7 @@ The file's first line must be `import type { CSSProperties } from 'react'`.
 Writing `React.CSSProperties` will not compile: the modern JSX transform
 leaves no `React` binding in scope.
 
-- [ ] **Step 5: Implement Scenery**
+- [x] **Step 5: Implement Scenery**
 
 Create `src/components/scenery/Scenery.tsx`:
 
@@ -782,7 +782,7 @@ export function Scenery({ intensity = 'muted' }: SceneryProps) {
 }
 ```
 
-- [ ] **Step 6: Extend the scenery stylesheet**
+- [x] **Step 6: Extend the scenery stylesheet**
 
 Append to `src/components/scenery/Scenery.module.css`:
 
@@ -853,17 +853,17 @@ Append to `src/components/scenery/Scenery.module.css`:
 }
 ```
 
-- [ ] **Step 7: Run the full suite**
+- [x] **Step 7: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 8: Build and lint**
+- [x] **Step 8: Build and lint**
 
 Run: `npm run build && npm run lint`
 Expected: both clean.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add src/components/scenery

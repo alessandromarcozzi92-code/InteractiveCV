@@ -34,3 +34,68 @@
   fill: var(--star);
   filter: drop-shadow(var(--glow-cyan));
 }
+
+.scenery {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-scenery);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 80% at 50% 100%,
+      rgb(0 0 0 / 0) 40%,
+      rgb(0 0 0 / 0.55) 100%
+    ),
+    linear-gradient(to bottom, var(--sky-zenith) 0%, var(--sky-horizon) 100%);
+}
+
+.skyline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.skyline[data-plane='far'] .building {
+  fill: var(--city-far);
+}
+
+.skyline[data-plane='near'] .building {
+  fill: var(--city-near);
+}
+
+.window {
+  fill: var(--window);
+  opacity: 0.75;
+}
+
+/*
+ * The vertical offset goes through a custom property, never through
+ * `transform` directly: Task 8 animates `transform` for parallax, and a
+ * static transform here would simply be overwritten.
+ */
+.skyline,
+.stars {
+  --base-y: 0px;
+  transform: translateY(var(--base-y));
+}
+
+/* Muted is the default because most of the site is content. */
+.scenery[data-intensity='muted'] .skyline {
+  --base-y: 12vh;
+  opacity: 0.7;
+}
+
+.scenery[data-intensity='muted'] .stars {
+  opacity: 0.6;
+}
+
+.scenery[data-intensity='full'] .skyline {
+  --base-y: 0px;
+}
