@@ -1,0 +1,26 @@
+.header {
+  display: grid;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+  border-bottom: 2px solid var(--c-panel);
+  padding-bottom: var(--space-2);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--fs-6);
+  color: var(--c-ink);
+}
+
+.index {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-1);
+  color: var(--c-accent);
+}
+
+/*
+ * Deliberately no wide-viewport rule here. Above 1024px the shell puts
+ * this whole block into its own narrow column (Task 6), so the title and
+ * the index stay stacked at every width.
+ */

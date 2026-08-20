@@ -1028,7 +1028,7 @@ git commit -m "feat: add frame depth variants and a titleless panel"
 The index is derived from `MENU_ITEMS`, never written by hand: adding a
 seventh section must renumber every screen automatically.
 
-- [ ] **Step 1: Write the failing sections test**
+- [x] **Step 1: Write the failing sections test**
 
 Create `src/lib/sections.test.ts`:
 
@@ -1052,12 +1052,12 @@ test('returns null for a path outside the menu', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/lib/sections.test.ts`
 Expected: FAIL — cannot resolve `./sections`.
 
-- [ ] **Step 3: Implement sectionPosition**
+- [x] **Step 3: Implement sectionPosition**
 
 Create `src/lib/sections.ts`:
 
@@ -1081,7 +1081,7 @@ export function sectionPosition(path: string): SectionPosition | null {
 }
 ```
 
-- [ ] **Step 4: Write the failing ScreenHeader test**
+- [x] **Step 4: Write the failing ScreenHeader test**
 
 Create `src/components/layout/ScreenHeader.test.tsx`:
 
@@ -1106,12 +1106,12 @@ test('omits the index for a path outside the menu', () => {
 })
 ```
 
-- [ ] **Step 5: Run to verify it fails**
+- [x] **Step 5: Run to verify it fails**
 
 Run: `npm test src/components/layout/ScreenHeader.test.tsx`
 Expected: FAIL — cannot resolve `./ScreenHeader`.
 
-- [ ] **Step 6: Implement ScreenHeader**
+- [x] **Step 6: Implement ScreenHeader**
 
 The index is text, not a decorative flourish: it says where you are, and
 the spec forbids conveying that through colour alone.
@@ -1173,12 +1173,12 @@ Create `src/components/layout/ScreenHeader.module.css`:
  */
 ```
 
-- [ ] **Step 7: Run the full suite**
+- [x] **Step 7: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/lib src/components/layout
