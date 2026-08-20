@@ -18,6 +18,17 @@
   }
 }
 
+@keyframes rise-in {
+  from {
+    opacity: 0.15;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .blink {
   animation: blink 1s steps(1, end) infinite;
 }
@@ -26,9 +37,25 @@
   animation: wipe-in 220ms steps(8, end) both;
 }
 
+/*
+ * The finished state IS the default: .reveal styles nothing on its own.
+ * A browser that does not understand the block below simply shows the
+ * element, which is the whole point of the contract.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise-in 1ms steps(4, end) both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 28%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blink,
-  .wipe {
+  .wipe,
+  .reveal {
     animation: none;
   }
 }

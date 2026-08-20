@@ -22,7 +22,7 @@ export function TrainingScreen({ training = cv.training }: TrainingScreenProps) 
       <Panel>
         <ul className={styles.list}>
           {training.map((entry) => (
-            <li key={entry.id} className={styles.group}>
+            <li key={entry.id} className={`${styles.group} reveal`}>
               <h3>{entry.title}</h3>
               <div className={styles.meta}>
                 <span>{entry.org}</span>

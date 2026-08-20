@@ -99,3 +99,38 @@
 .scenery[data-intensity='full'] .skyline {
   --base-y: 0px;
 }
+
+@keyframes drift-up {
+  from {
+    transform: translateY(var(--base-y));
+  }
+  to {
+    transform: translateY(calc(var(--base-y) - var(--drift, 0) * 1px));
+  }
+}
+
+/*
+ * Parallax is the one place steps() is wrong: stepped drift reads as a
+ * dropped frame, not as a style.
+ */
+@supports (animation-timeline: scroll(root)) {
+  @media (prefers-reduced-motion: no-preference) {
+    .stars,
+    .skyline {
+      animation: drift-up 1ms linear both;
+      animation-timeline: scroll(root);
+    }
+
+    .stars {
+      --drift: 40;
+    }
+
+    .skyline[data-plane='far'] {
+      --drift: 100;
+    }
+
+    .skyline[data-plane='near'] {
+      --drift: 200;
+    }
+  }
+}

@@ -1683,7 +1683,7 @@ git commit -m "feat: turn the title screen into a full scene"
 - Produces: the `.reveal` class, applied by screens to scroll-revealed
   blocks
 
-- [ ] **Step 1: Write the failing motion-contract test**
+- [x] **Step 1: Write the failing motion-contract test**
 
 This is the one automated guard on the constraint that matters most: no
 stylesheet may hide something in base CSS and rely on an animation to bring
@@ -1779,7 +1779,7 @@ test('motion.css disables its animations under reduced motion', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it passes already, then keep it**
+- [x] **Step 2: Run to verify it passes already, then keep it**
 
 Run: `npm test src/styles/motion.test.ts`
 Expected: PASS — today no stylesheet hides anything, which is exactly the
@@ -1787,7 +1787,7 @@ state this test exists to preserve. Unlike the other tasks, the test is a
 ratchet rather than a red-green cycle: it must stay green while Steps 3-5
 add animation.
 
-- [ ] **Step 3: Add the parallax and reveal keyframes**
+- [x] **Step 3: Add the parallax and reveal keyframes**
 
 Replace `src/styles/motion.css`:
 
@@ -1859,7 +1859,7 @@ Replace `src/styles/motion.css`:
 `0`. Combined with the source check in Step 1, that means no scroll position
 and no browser can produce genuinely invisible content.
 
-- [ ] **Step 4: Drive the scenery planes**
+- [x] **Step 4: Drive the scenery planes**
 
 The keyframes must live in this file, not in `motion.css`. CSS Modules
 scope `@keyframes` names: a module referencing a keyframe defined in a
@@ -1904,7 +1904,7 @@ Append to `src/components/scenery/Scenery.module.css`:
 }
 ```
 
-- [ ] **Step 5: Apply the reveal to content blocks**
+- [x] **Step 5: Apply the reveal to content blocks**
 
 `.reveal` is a global class from `motion.css`, applied in JSX the same way
 `.blink` and `.wipe` already are. No stylesheet change is needed.
@@ -1925,17 +1925,17 @@ Leave the other screens alone: `StatsScreen`, `SkillsScreen`,
 `InventoryScreen` and `ContactScreen` fit on one screen, so a
 scroll-triggered reveal there would either never fire or fire instantly.
 
-- [ ] **Step 6: Run the full suite**
+- [x] **Step 6: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests, including the three motion-contract tests.
 
-- [ ] **Step 7: Build and lint**
+- [x] **Step 7: Build and lint**
 
 Run: `npm run build && npm run lint`
 Expected: both clean.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add src/styles src/components/scenery src/routes

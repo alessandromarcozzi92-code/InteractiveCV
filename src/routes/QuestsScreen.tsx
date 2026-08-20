@@ -23,7 +23,7 @@ export function QuestsScreen({ quests = cv.quests }: QuestsScreenProps) {
       <Panel>
         <ul className={styles.list}>
           {quests.map((quest, index) => (
-            <li key={quest.id} className={styles.group} data-first={index === 0 ? '' : undefined}>
+            <li key={quest.id} className={`${styles.group} reveal`} data-first={index === 0 ? '' : undefined}>
               <h3>{quest.title}</h3>
               <div className={styles.meta}>
                 <span>{quest.org}</span>
