@@ -1953,7 +1953,7 @@ git commit -m "feat: add scroll-driven parallax and content reveals"
 - Consumes: nothing
 - Produces: nothing
 
-- [ ] **Step 1: Document the scenery boundary in the README**
+- [x] **Step 1: Document the scenery boundary in the README**
 
 Under the existing `## Architettura` section, add a third bullet after the
 two that are already there:
@@ -1983,7 +1983,7 @@ These cannot be automated — jsdom evaluates neither `@supports` nor
 6. Text contrast against the sky gradient still reads at the top and the
    bottom of a long screen.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add README.md

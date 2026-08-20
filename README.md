@@ -59,12 +59,17 @@ Il PDF scaricabile e `public/cv.pdf`.
 
 ## Architettura
 
-Due confini tengono il progetto manutenibile:
+Tre confini tengono il progetto manutenibile:
 
 - **Contenuti**: tutto il CV vive in `src/data/cv.ts`, tipizzato. Le
   pagine non contengono nessuna stringa di contenuto.
 - **Grafica**: ogni dettaglio pixel-art vive in `components/ui/`.
   Cambiare pack grafico non tocca le pagine.
+- **Scenografia**: cielo, stelle e skyline vivono in
+  `src/components/scenery/`, disegnati in SVG inline. Non conoscono il
+  contenuto e il contenuto non conosce loro: togliendo l'intero layer il
+  CV resta completo. La palette ambientale (`--sky-*`, `--city-*`) e
+  separata da quella dell'interfaccia e nessun componente di UI puo usarla.
 
 ## Deploy
 
