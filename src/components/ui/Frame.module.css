@@ -13,3 +13,10 @@
     8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
   );
 }
+
+.frame[data-depth='raised'] {
+  box-shadow:
+    0 0 0 var(--border-w) var(--c-bg),
+    var(--space-2) var(--space-2) 0 var(--border-w) rgb(0 0 0 / 0.75),
+    var(--glow-accent);
+}

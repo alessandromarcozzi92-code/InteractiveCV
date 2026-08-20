@@ -15,3 +15,13 @@ test('keeps the caller className alongside its own', () => {
   render(<Frame className="custom">CONTENT</Frame>)
   expect(screen.getByText('CONTENT')).toHaveClass('custom')
 })
+
+test('is flat by default', () => {
+  render(<Frame>CONTENT</Frame>)
+  expect(screen.getByText('CONTENT')).toHaveAttribute('data-depth', 'flat')
+})
+
+test('carries the requested depth', () => {
+  render(<Frame depth="raised">CONTENT</Frame>)
+  expect(screen.getByText('CONTENT')).toHaveAttribute('data-depth', 'raised')
+})

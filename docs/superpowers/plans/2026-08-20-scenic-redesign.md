@@ -890,7 +890,7 @@ git commit -m "feat: add sky, skyline planes, and the composed scenery layer"
 Existing calls to `Frame` and `Panel` keep working unchanged. The existing
 tests for both must not be edited.
 
-- [ ] **Step 1: Append the failing Frame test**
+- [x] **Step 1: Append the failing Frame test**
 
 Add to `src/components/ui/Frame.test.tsx`:
 
@@ -906,7 +906,7 @@ test('carries the requested depth', () => {
 })
 ```
 
-- [ ] **Step 2: Append the failing Panel test**
+- [x] **Step 2: Append the failing Panel test**
 
 Add to `src/components/ui/Panel.test.tsx`:
 
@@ -918,12 +918,12 @@ test('renders no heading when no title is given', () => {
 })
 ```
 
-- [ ] **Step 3: Run to verify both fail**
+- [x] **Step 3: Run to verify both fail**
 
 Run: `npm test src/components/ui`
 Expected: FAIL — `depth` is not rendered, and `Panel` requires `title`.
 
-- [ ] **Step 4: Implement the Frame depth prop**
+- [x] **Step 4: Implement the Frame depth prop**
 
 Replace `src/components/ui/Frame.tsx`:
 
@@ -967,7 +967,7 @@ Append to `src/components/ui/Frame.module.css`:
 }
 ```
 
-- [ ] **Step 5: Implement the titleless Panel**
+- [x] **Step 5: Implement the titleless Panel**
 
 Replace `src/components/ui/Panel.tsx`:
 
@@ -995,13 +995,13 @@ export function Panel({ title, children, as = 'section', className, depth }: Pan
 }
 ```
 
-- [ ] **Step 6: Run the full suite**
+- [x] **Step 6: Run the full suite**
 
 Run: `npm test`
 Expected: PASS, all tests — including the untouched Frame and Panel tests
 from the original build.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/components/ui

@@ -10,3 +10,9 @@ test('renders its children', () => {
   render(<Panel title="SKILL TREE">body</Panel>)
   expect(screen.getByText('body')).toBeInTheDocument()
 })
+
+test('renders no heading when no title is given', () => {
+  render(<Panel>body</Panel>)
+  expect(screen.queryByRole('heading')).not.toBeInTheDocument()
+  expect(screen.getByText('body')).toBeInTheDocument()
+})
