@@ -1,4 +1,5 @@
 :root {
+  /* --- UI palette: unchanged, meanings unchanged --- */
   --c-bg: #10131c;
   --c-panel: #1d2233;
   --c-ink: #e8e6da;
@@ -6,8 +7,32 @@
   --c-accent-2: #38b6ff;
   --c-hp: #6ee06e;
 
+  /* --- Environment palette: the scene, never the interface.
+         Only components/scenery/ may reference these. --- */
+  --sky-zenith: #070912;
+  --sky-horizon: #2a2038;
+  --city-far: #161b2e;
+  --city-near: #080a12;
+  /* Same values as --c-ink / --c-accent, different roles: a lit window is
+     not "the active state". The scene must not follow a UI palette change. */
+  --star: #e8e6da;
+  --window: #f2c94c;
+
+  --glow-accent: 0 0 12px rgb(242 201 76 / 0.45);
+  --glow-cyan: 0 0 12px rgb(56 182 255 / 0.4);
+
   --font-display: 'Silkscreen', monospace;
   --font-body: 'Pixelify Sans', monospace;
+
+  /* Whole pixels only: a pixel font at a fractional size shimmers. */
+  --fs-1: 12px;
+  --fs-2: 14px;
+  --fs-3: 16px;
+  --fs-4: 20px;
+  --fs-5: 24px;
+  --fs-6: 32px;
+  --fs-7: 48px;
+  --fs-8: 64px;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -19,6 +44,7 @@
   --border-w: 4px;
   --measure: 65ch;
 
-  --z-shell: 10;
-  --z-overlay: 20;
+  --z-scenery: 0;
+  --z-content: 10;
+  --z-shell: 20;
 }

@@ -12,7 +12,7 @@
 
 .key {
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: var(--fs-1);
   color: var(--c-accent);
 }
 
@@ -36,7 +36,7 @@
 .groupTitle {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: var(--fs-1);
   color: var(--c-accent-2);
 }
 
@@ -44,7 +44,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  font-size: 14px;
+  font-size: var(--fs-2);
 }
 
 .tags {
@@ -59,5 +59,5 @@
 .tag {
   border: 2px solid var(--c-accent-2);
   padding: 0 var(--space-2);
-  font-size: 13px;
+  font-size: var(--fs-1);
 }

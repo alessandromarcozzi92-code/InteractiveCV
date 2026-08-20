@@ -10,7 +10,7 @@
 
 .title {
   margin: 0;
-  font-size: clamp(24px, 6vw, 48px);
+  font-size: clamp(var(--fs-6), 9vw, var(--fs-8));
   color: var(--c-accent);
 }
 

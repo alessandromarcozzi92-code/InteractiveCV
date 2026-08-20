@@ -1,6 +1,6 @@
 .title {
   margin: 0 0 var(--space-3);
-  font-size: 18px;
+  font-size: var(--fs-4);
   color: var(--c-accent);
 }
 

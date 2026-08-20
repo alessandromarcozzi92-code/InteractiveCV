@@ -20,7 +20,7 @@
 
 .brand {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--fs-3);
   color: var(--c-ink);
 }
 

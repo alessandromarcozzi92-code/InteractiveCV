@@ -65,7 +65,7 @@ Library. No new runtime dependencies.
   `--window`, `--glow-accent`, `--glow-cyan`, `--fs-1`..`--fs-8`,
   `--z-scenery`, `--z-content`, `--z-shell`.
 
-- [ ] **Step 1: Write the failing token test**
+- [x] **Step 1: Write the failing token test**
 
 This test reads the stylesheets as text. jsdom does not evaluate CSS, so
 asserting on the source is the only way to hold these invariants. It is
@@ -131,13 +131,13 @@ test('no stylesheet hardcodes a font-size outside the scale', () => {
 })
 ```
 
-- [ ] **Step 2: Run to verify it fails**
+- [x] **Step 2: Run to verify it fails**
 
 Run: `npm test src/styles/tokens.test.ts`
 Expected: FAIL — no environment tokens, no `--fs-*`, and several modules
 still hardcode `font-size` in pixels.
 
-- [ ] **Step 3: Extend the tokens**
+- [x] **Step 3: Extend the tokens**
 
 Replace `src/styles/tokens.css`:
 
@@ -196,7 +196,7 @@ Replace `src/styles/tokens.css`:
 
 Note `--z-overlay` is gone: nothing referenced it.
 
-- [ ] **Step 4: Replace the hardcoded font sizes**
+- [x] **Step 4: Replace the hardcoded font sizes**
 
 Six edits, one per file. Each replaces a literal with the matching token.
 
@@ -257,18 +257,18 @@ in `.tag`:
 
 `src/components/ui/StatBar.module.css` has no `font-size`; leave it alone.
 
-- [ ] **Step 5: Run the full suite**
+- [x] **Step 5: Run the full suite**
 
 Run: `npm test`
 Expected: PASS — the four new token tests plus the 52 existing ones,
 unmodified.
 
-- [ ] **Step 6: Build and lint**
+- [x] **Step 6: Build and lint**
 
 Run: `npm run build && npm run lint`
 Expected: both clean.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/styles src/components src/routes
