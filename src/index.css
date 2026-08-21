@@ -37,7 +37,9 @@ h3 {
 }
 
 p {
-  max-width: var(--measure);
+  /* 65ch is a reading measure, not a floor: on a phone it is wider than the
+     screen and drags the whole panel off the right edge. */
+  max-width: min(var(--measure), 100%);
 }
 
 a {
@@ -47,4 +49,6 @@ a {
 :focus-visible {
   outline: 2px solid var(--c-accent-2);
   outline-offset: 2px;
+  /* Cyan means "you can act on this" — the glow belongs here, not in the sky. */
+  box-shadow: var(--glow-cyan);
 }

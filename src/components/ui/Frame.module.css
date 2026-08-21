@@ -1,4 +1,6 @@
 .frame {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   background: var(--c-panel);
   border: var(--border-w) solid var(--c-ink);
   box-shadow:

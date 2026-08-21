@@ -10,29 +10,41 @@
   height: 100%;
 }
 
+/*
+ * Stars and windows are stroked square caps, never fills: the viewBox is
+ * stretched to the viewport, so anything sized in viewBox units turns into
+ * a slab. A non-scaling stroke is the one length CSS keeps in real pixels.
+ */
 .star {
-  fill: var(--star);
+  stroke: var(--star);
+  stroke-linecap: square;
+  vector-effect: non-scaling-stroke;
 }
 
 .star[data-tier='1'] {
-  opacity: 1;
+  stroke-width: 3px;
+  opacity: 0.95;
 }
 
 .star[data-tier='2'] {
-  opacity: 0.65;
+  stroke-width: 2px;
+  opacity: 0.6;
 }
 
 .star[data-tier='3'] {
-  opacity: 0.35;
+  stroke-width: 2px;
+  opacity: 0.3;
 }
 
+/* Clear of the header, and no glow: cyan reads as interactive everywhere
+   else on the site, and the sky is the one place nothing is clickable. */
 .moon {
-  top: 8%;
-  right: 12%;
-  width: 64px;
-  height: 64px;
+  top: 16%;
+  right: 9%;
+  width: 56px;
+  height: 56px;
   fill: var(--star);
-  filter: drop-shadow(var(--glow-cyan));
+  opacity: 0.9;
 }
 
 .scenery {
@@ -71,8 +83,12 @@
 }
 
 .window {
-  fill: var(--window);
-  opacity: 0.75;
+  stroke: var(--window);
+  stroke-width: 4px;
+  stroke-linecap: square;
+  vector-effect: non-scaling-stroke;
+  /* Lit is the resting state: the wave below only decides when it arrives. */
+  opacity: 0.5;
 }
 
 /*
@@ -94,6 +110,12 @@
 
 .scenery[data-intensity='muted'] .stars {
   opacity: 0.6;
+}
+
+/* The moon belongs to the establishing shot. Behind a screen of text it
+   only ever peeks out from behind a panel edge, so it stays home. */
+.scenery[data-intensity='muted'] .moon {
+  display: none;
 }
 
 .scenery[data-intensity='full'] .skyline {
@@ -132,5 +154,26 @@
     .skyline[data-plane='near'] {
       --drift: 200;
     }
+  }
+}
+
+/*
+ * The city comes on: windows arrive in four stepped waves, roughly a
+ * building at a time. Stepped, because a window is on or off — a fade
+ * would read as a different medium.
+ */
+@keyframes window-on {
+  from {
+    opacity: 0.08;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .window {
+    animation: window-on 700ms steps(2, end) both;
+    animation-delay: calc(var(--wave, 0) * 190ms);
   }
 }

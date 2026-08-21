@@ -4,7 +4,9 @@ export type Building = {
   x: number
   width: number
   height: number
+  /** Windows in reading order, row by row; `columns` slices them into a grid. */
   windows: boolean[]
+  columns: number
 }
 
 /**
@@ -49,8 +51,14 @@ export function createStars(count: number, seed: number): Star[] {
   })
 }
 
+/** Vertical gap between window rows, in viewBox units. */
+const ROW_GAP = 3.4
+
 /**
  * Builds a row of buildings that tiles the full viewBox width.
+ *
+ * Widths vary: a city of identical slabs reads as a bar chart. They still
+ * sum to exactly 100 so the horizon never shows a gap.
  *
  * @param count - How many buildings to place.
  * @param seed - Seed for the layout.
@@ -63,17 +71,28 @@ export function createSkyline(
   maxHeight: number,
 ): Building[] {
   const random = mulberry32(seed)
-  const width = 100 / count
 
-  return Array.from({ length: count }, (_, index) => {
+  const weights = Array.from({ length: count }, () => 0.65 + random() * 0.7)
+  const total = weights.reduce((sum, weight) => sum + weight, 0)
+
+  let x = 0
+
+  return weights.map((weight, index) => {
+    const width = index === count - 1 ? 100 - x : (weight / total) * 100
     const height = Math.round((0.35 + random() * 0.65) * maxHeight * 100) / 100
-    const windowCount = 3 + Math.floor(random() * 6)
+    const columns = width > 6 ? 3 : 2
+    // Rows stop short of the roof and the horizon, so no window escapes.
+    const rows = Math.max(1, Math.min(5, Math.floor((height - 4) / ROW_GAP)))
 
-    return {
-      x: Math.round(index * width * 100) / 100,
+    const building: Building = {
+      x,
       width,
       height,
-      windows: Array.from({ length: windowCount }, () => random() > 0.45),
+      columns,
+      windows: Array.from({ length: columns * rows }, () => random() > 0.42),
     }
+
+    x += width
+    return building
   })
 }

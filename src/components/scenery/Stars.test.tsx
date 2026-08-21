@@ -2,9 +2,9 @@ import { render } from '@testing-library/react'
 import { Moon } from './Moon'
 import { Stars } from './Stars'
 
-test('Stars renders one rect per star', () => {
+test('Stars renders one mark per star', () => {
   const { container } = render(<Stars count={12} />)
-  expect(container.querySelectorAll('rect')).toHaveLength(12)
+  expect(container.querySelectorAll('line')).toHaveLength(12)
 })
 
 test('Stars is hidden from assistive technology', () => {

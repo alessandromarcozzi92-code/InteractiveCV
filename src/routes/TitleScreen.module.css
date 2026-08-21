@@ -4,7 +4,8 @@
   display: grid;
   place-content: center;
   justify-items: center;
-  padding: var(--space-4);
+  /* Lifts the name clear of the rooftops: the sky is the quiet half. */
+  padding: var(--space-4) var(--space-4) 26vh;
 }
 
 .stage {
@@ -25,6 +26,10 @@
 
 .subtitle {
   margin: 0;
+  /* Third rung of a three-part hierarchy: name, role, action. At body size
+     it read as a caption under a 64px name. */
+  font-size: var(--fs-4);
+  letter-spacing: 0.06em;
   color: var(--c-ink);
 }
 

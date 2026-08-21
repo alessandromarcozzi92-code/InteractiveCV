@@ -1,10 +1,13 @@
 .shell {
-  --header-h: 96px;
+  /* Only used to park the sticky section index below the bar. */
+  --header-h: 72px;
 }
 
 .header {
-  position: fixed;
-  inset: 0 0 auto;
+  /* Sticky, not fixed: the bar wraps to two rows on a phone, and a fixed
+     bar would need its height hardcoded twice and get it wrong once. */
+  position: sticky;
+  top: 0;
   z-index: var(--z-shell);
   display: flex;
   flex-wrap: wrap;
@@ -41,7 +44,7 @@
   z-index: var(--z-content);
   max-width: 960px;
   margin: 0 auto;
-  padding: calc(var(--header-h) + var(--space-5)) var(--space-4) var(--space-6);
+  padding: var(--space-5) var(--space-4) var(--space-6);
 }
 
 /*
